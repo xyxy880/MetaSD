@@ -9,7 +9,7 @@ from torch.utils.data import DataLoader
 import numpy as np
 from torch.utils.tensorboard import SummaryWriter
 
-os.environ['CUDA_VISIBLE_DEVICES'] = "0"  #（代表仅使用第0，1号GPU）
+os.environ['CUDA_VISIBLE_DEVICES'] = "2"  #（代表仅使用第0，1号GPU）
 
 # os.makedirs("./images/gan/", exist_ok=True)
 
