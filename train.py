@@ -20,7 +20,6 @@ torch.cuda.manual_seed_all(111)
 np.random.seed(111)
 # 用于生成指定的随机数
 
-
 def main(args):
 
     device = torch.device(args.cuda)
