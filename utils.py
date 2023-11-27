@@ -122,12 +122,8 @@ def save(LR,SR,HR,dir,name):
     np.save(f'./result/{dir}/{name}_HR', HR)
 
 
-
-
 def print_time():
     print('Time: ', strftime('%b-%d %H:%M:%S', localtime()))
-
-
 
 if __name__=='__main__':
     # print(iter_weights(3, 234))

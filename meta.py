@@ -9,6 +9,10 @@ from skimage.metrics import mean_squared_error as mse
 import cv2 as cv
 from copy import deepcopy
 
+
+import sys
+sys.path.append('..')
+
 class Meta(nn.Module):
 
     def __init__(self,args):
@@ -23,7 +27,7 @@ class Meta(nn.Module):
         # self.net.load_state_dict(torch.load('/hdd/zhanghonghu/0001/001/code/ZHH_MAML/version6_0/15001.pth'))
         # self.loss_fn=My_loss()
 
-        self.loss_fn=torch.nn.L1Loss().cuda()
+        self.loss_fn=L1Loss()
         self.meta_optim = optim.Adam(self.net.parameters(), lr=self.meta_lr)
         self.update_step=args.update_step
         self.batchsize=args.batchsize
@@ -80,8 +84,6 @@ class Meta(nn.Module):
         self.meta_optim.zero_grad()
         loss.backward()
         self.meta_optim.step()
-
-
 
         return [t/self.batchsize for t in loss_qq]
 

@@ -9,7 +9,7 @@ from torch.utils.data import DataLoader
 import numpy as np
 from torch.utils.tensorboard import SummaryWriter
 
-os.environ['CUDA_VISIBLE_DEVICES'] = "0"  #（代表仅使用第0，1号GPU）
+os.environ['CUDA_VISIBLE_DEVICES'] = "4"  #（代表仅使用第0，1号GPU）
 
 # os.makedirs("./images/gan/", exist_ok=True)
 
@@ -62,11 +62,12 @@ if __name__ == '__main__':
     argparser = argparse.ArgumentParser()
     argparser.add_argument('--epoches', type=int, help='epoch number', default=2000000000)
     argparser.add_argument('--cuda', type=str, help='device', default='cuda:0')
-    argparser.add_argument('--batchsize', type=int, help='Task num for a single update,  max=len(Tasks)', default=3)
-    argparser.add_argument('--update_step', type=int, help='number of updates per task in the inner loop', default=1)
 
-    argparser.add_argument('--spt', type=int, help='k shot for support set', default=10)
-    argparser.add_argument('--qry', type=int, help='k shot for query set', default=10)
+    argparser.add_argument('--meta_batch', type=int, help='Task num for a single update,  max=len(Tasks)', default=1)
+    argparser.add_argument('--update_step', type=int, help='step of updates per task in the inner loop', default=1)
+
+    argparser.add_argument('--spt', type=int, help='support set', default=10)
+    argparser.add_argument('--qry', type=int, help='query set', default=10)
 
     argparser.add_argument('--meta_lr', type=float, help='meta-level outer learning rate', default=1e-4)
     argparser.add_argument('--task_lr', type=float, help='task-level inner update learning rate', default=1e-2)
